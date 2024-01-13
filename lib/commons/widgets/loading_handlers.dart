@@ -9,17 +9,23 @@ const LoadingDialogue({super.key, this.header, this.catLoading, this.footer});
 
     @override
     Widget build(BuildContext context) {
-
       return AlertDialog(
         title: const Text("Loading..."),
         content: Column(
           children: [
-            header ?? const Text("Please wait :D"),
-            catLoading ?? const CircularProgressIndicator(),
-            footer!,
+            testColumn()
           ],
         ),
       );
     }
 
+}
+
+Widget testColumn() {
+  return const Column(
+    children: [
+      Text("Please wait :D"),
+      CircularProgressIndicator(),
+    ],
+  );
 }
