@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 
-import '../../commons/widgets/firebase_init.dart';
-import '../../features/auth/interface/widgets/auth_checker.dart';
-import '../../features/homepage/interface/home_page.dart';
+import 'package:insight/commons/widgets/firebase_init.dart';
+import 'package:insight/features/auth/interface/widgets/auth_checker.dart';
+import 'package:insight/features/homepage/interface/home_page.dart';
 
 part 'router_config.gr.dart';
 

@@ -8,7 +8,7 @@ import 'package:insight/commons/widgets/error_handlers.dart';
 import 'package:insight/commons/widgets/loading_handlers.dart';
 import 'package:insight/features/auth/providers/auth_provider.dart';
 
-import '../../../../commons/models/custom_errors.dart';
+import 'package:insight/commons/models/custom_errors.dart';
 
 @RoutePage(name: "AuthCheckerRoute")
 class AuthChecker extends ConsumerWidget {

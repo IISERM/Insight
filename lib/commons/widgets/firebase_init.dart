@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../config/firebase_options.dart';
-import '../../features/auth/interface/widgets/auth_checker.dart';
-import '../models/custom_errors.dart';
+import 'package:insight/config/firebase_options.dart';
+import 'package:insight/features/auth/interface/widgets/auth_checker.dart';
+import 'package:insight/commons/models/custom_errors.dart';
 import 'error_handlers.dart';
 import 'loading_handlers.dart';
 

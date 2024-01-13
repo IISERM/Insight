@@ -13,19 +13,11 @@ const LoadingDialogue({super.key, this.header, this.catLoading, this.footer});
         title: const Text("Loading..."),
         content: Column(
           children: [
-            testColumn()
-          ],
+            header ?? const Text("Please wait :D"),
+            catLoading ?? const CircularProgressIndicator(),
+            footer ?? Container(),
+      ],
         ),
       );
     }
-
-}
-
-Widget testColumn() {
-  return const Column(
-    children: [
-      Text("Please wait :D"),
-      CircularProgressIndicator(),
-    ],
-  );
 }
