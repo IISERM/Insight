@@ -16,7 +16,7 @@ const TextStyle loginButtonTextStyle = TextStyle(color: Colors.white);
   shape: MaterialStateProperty.all(
       RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
-          side:  const BorderSide(color: Colors.white, width:2.0)
+          side:  const BorderSide(color: Colors.transparent, width:2.0)
       )
   ),
  );
