@@ -33,7 +33,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       body: SafeArea(
           child: Container(
         decoration: loginPageContainerDecoration,
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InsightLogoImage(),
