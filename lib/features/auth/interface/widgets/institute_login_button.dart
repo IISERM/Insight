@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InstituteLoginButton extends TextButton {
 
-  const InstituteLoginButton({super.key})
+   InstituteLoginButton({super.key})
       : super(
           child: const Text("Institute Login", style: loginButtonTextStyle),
           style: loginButtonStyle,
@@ -10,5 +10,13 @@ class InstituteLoginButton extends TextButton {
   );
 
 }
-const TextStyle loginButtonTextStyle = TextStyle();
-const ButtonStyle loginButtonStyle = ButtonStyle();
+const TextStyle loginButtonTextStyle = TextStyle(color: Colors.white);
+ ButtonStyle loginButtonStyle = ButtonStyle(alignment: Alignment.center,
+  backgroundColor: MaterialStateProperty.all(Colors.cyan),
+  shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          side:  const BorderSide(color: Colors.white, width:2.0)
+      )
+  ),
+ );
