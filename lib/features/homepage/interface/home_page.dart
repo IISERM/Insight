@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:insight/features/homepage/interface/widgets/facilities.dart';
 import 'package:insight/features/homepage/interface/widgets/greetings.dart';
-import 'package:insight/features/homepage/interface/widgets/helpfultiles.dart';
+import 'package:insight/features/homepage/interface/widgets/helpful_tiles.dart';
 import 'package:insight/features/homepage/interface/widgets/notification_container.dart';
 
 @RoutePage()
