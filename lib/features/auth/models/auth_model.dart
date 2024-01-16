@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,26 +9,39 @@ class Authentication {
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
   Future<void> signInWithGoogle(BuildContext context) async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(clientId: "http://336710432752-981dj9ihjtaj84d86529gls5i6k40jbu.apps.googleusercontent.com/").signInSilently();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser!.authentication;
-    final OAuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+    if (kIsWeb) {
+      // Create a new provider
+      GoogleAuthProvider googleProvider = GoogleAuthProvider();
+      // Once signed in, return the UserCredential
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithPopup(googleProvider);
+      User? user = userCredential.user;
 
-    print(credential);
+    } else {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn()
+          .signIn();
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser!.authentication;
+      final OAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-    //TODO: Use SharedPreferences to store this data in the user's device
+      //TODO: Use SharedPreferences to store this data in the user's device
 
-    try {
-      await _auth.signInWithCredential(credential);
-    } on FirebaseAuthException catch (exception) {
-      //TODO: Report and handle exception
+      try {
+        await _auth.signInWithCredential(credential);
+      } on FirebaseAuthException catch (exception) {
+        //TODO: Report and handle exception
+      }
+
+
+      // Or use signInWithRedirect
+      // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
     }
-  }
 
-  Future<void> signOut() async {
-    await _auth.signOut();
+
+    Future<void> signOut() async {
+      await _auth.signOut();
+    }
   }
 }
