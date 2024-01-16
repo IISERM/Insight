@@ -26,14 +26,14 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     });
   }
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Container(
         decoration: loginPageContainerDecoration,
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             InsightLogoImage(),
