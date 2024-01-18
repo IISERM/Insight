@@ -31,15 +31,22 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-          child: Container(
-        decoration: loginPageContainerDecoration,
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InsightLogoImage(),
-            InstituteLoginButton(),
-            GuestLoginButton(),
-          ],
+          child: Center(
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: loginPageContainerDecoration,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              InsightLogoImage(width: 200, height: 200),
+              const SizedBox(height: 13.0),
+              InstituteLoginButton(),
+              const SizedBox(height: 13.0),
+              GuestLoginButton(),
+            ],
+          ),
         ),
       )),
     );
@@ -47,6 +54,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   BoxDecoration loginPageContainerDecoration = BoxDecoration(
       image: DecorationImage(
-          image: NetworkImage(
-              "https://png.pngtree.com/png-vector/20190330/ourlarge/pngtree-continuous-line-drawing-of-minimalist-cat-animals-png-image_895421.jpg")));
+    image: Image.network(
+            "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/i-i-s-e-r-m-test-app-gct9v1/assets/n5vs1zgakg2k/image_2023-07-12_061133339.png")
+        .image,
+    fit: BoxFit.cover,
+  ));
 }
+// In flutter, the container takes up only the size of the biggest object inside it. You have to set the main container in the scafoold to occupy 100% of height and width manually

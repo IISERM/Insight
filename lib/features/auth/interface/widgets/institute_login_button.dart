@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:insight/features/auth/models/auth_model.dart';
 import 'package:insight/features/auth/providers/auth_provider.dart';
-
 
 class InstituteLoginButton extends ConsumerWidget {
   const InstituteLoginButton({super.key});
@@ -13,13 +11,17 @@ class InstituteLoginButton extends ConsumerWidget {
     return TextButton(
         onPressed: () => auth.signInWithGoogle(context),
         style: loginButtonStyle,
-        child: const Text("Institute Login", style: loginButtonTextStyle),
-  );
+        child: const Text("Institute Login", style: loginButtonTextStyle));
 }
-  Future<void> _googleSignIn(Authentication auth, BuildContext context) async {
-    await auth.signInWithGoogle(context);
-  }
 
 }
-const TextStyle loginButtonTextStyle = TextStyle();
-const ButtonStyle loginButtonStyle = ButtonStyle();
+const TextStyle loginButtonTextStyle = TextStyle(color: Colors.white);
+ ButtonStyle loginButtonStyle = ButtonStyle(alignment: Alignment.center,
+  backgroundColor: MaterialStateProperty.all(Colors.cyan),
+  shape: MaterialStateProperty.all(
+      RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          side:  const BorderSide(color: Colors.transparent, width:2.0)
+      )
+  ),
+ );
