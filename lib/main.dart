@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:insight/commons/models/register_adapters.dart';
 import 'package:insight/config/routes/router_config.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'features/auth/interface/widgets/auth_checker.dart';
@@ -16,11 +17,7 @@ import 'config/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Hive.initFlutter();
-
-  
-
+  await hiveSetup();
   runApp(const ProviderScope(child: Insight()));
 }
 
@@ -47,4 +44,9 @@ class Insight extends ConsumerWidget {
       routerConfig: _router.config(),
     );
   }
+}
+
+Future<void> hiveSetup() async {
+  await Hive.initFlutter();
+  registerTypeAdapters();
 }

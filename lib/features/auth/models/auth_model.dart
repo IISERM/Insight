@@ -1,14 +1,22 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive/hive.dart';
+import 'package:insight/commons/models/hive_objects/insight_user_object.dart';
 
 class Authentication {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
+
   Future<void> signInWithGoogle(BuildContext context) async {
+    final userBox = await Hive.openBox<InsightUser>("user_box");
+
+
     if (kIsWeb) {
       // Create a new provider
       GoogleAuthProvider googleProvider = GoogleAuthProvider();
