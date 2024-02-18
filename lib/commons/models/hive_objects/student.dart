@@ -7,20 +7,25 @@ part 'student.g.dart';
 @HiveType(typeId: 1)
 class Student {
   @HiveField(0)
-  late String registrationNumber;
+  late String? registrationNumber;
 
   @HiveField(1)
-  late String name;
+  late String? name;
 
   @HiveField(2)
-  late String photoURL;
+  late String? photoURL;
 
   @HiveField(3)
-  late bool isSubscribedToSRM;
+  late bool? isSubscribedToSRM;
 
   @HiveField(4)
-  late Settings settings;
+  late Settings? settings;
 
   @HiveField(5)
-  late InsightUser user;
+  late InsightUser? insightUser;
+
+  @override
+  String toString() {
+    return 'Student{registrationNumber: $registrationNumber, \nname: $name, \nphotoURL: $photoURL,\nisSubscribedToSRM: $isSubscribedToSRM, \nsettings: $settings, \ninsightUser: $insightUser}';
+  }
 }

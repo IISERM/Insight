@@ -16,13 +16,4 @@ final fireBaseAuthProvider = Provider<FirebaseAuth>((ref) {
 });
 
 
-// @riverpod
-// Future<dynamic> authentication(ProviderRef<Authentication> ref) async {
-//   return Authentication();
-// }
 
-
-// @riverpod
-// Future<dynamic> authState(StreamProvider<User?> ref) {
-//    return ref.read(authenticationProvider);
-// }

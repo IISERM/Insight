@@ -17,12 +17,12 @@ class StudentAdapter extends TypeAdapter<Student> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Student()
-      ..registrationNumber = fields[0] as String
-      ..name = fields[1] as String
-      ..photoURL = fields[2] as String
-      ..isSubscribedToSRM = fields[3] as bool
-      ..settings = fields[4] as Settings
-      ..user = fields[5] as InsightUser;
+      ..registrationNumber = fields[0] as String?
+      ..name = fields[1] as String?
+      ..photoURL = fields[2] as String?
+      ..isSubscribedToSRM = fields[3] as bool?
+      ..settings = fields[4] as Settings?
+      ..insightUser = fields[5] as InsightUser?;
   }
 
   @override
@@ -40,7 +40,7 @@ class StudentAdapter extends TypeAdapter<Student> {
       ..writeByte(4)
       ..write(obj.settings)
       ..writeByte(5)
-      ..write(obj.user);
+      ..write(obj.insightUser);
   }
 
   @override

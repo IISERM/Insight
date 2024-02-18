@@ -1,12 +1,11 @@
 import 'package:hive/hive.dart';
-import 'package:insight/commons/models/hive_objects/settings_object.dart';
 
 part 'insight_user_object.g.dart';
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 0)
 class InsightUser {
   @HiveField(0)
-  late String accessToken;
+  late String? accessToken;
 
   @HiveField(1)
   late String? token;
@@ -17,6 +16,8 @@ class InsightUser {
   @HiveField(3)
   late String? secret;
 
+  @HiveField(4)
+  late String? refreshToken;
 
 
 }

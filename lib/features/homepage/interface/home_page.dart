@@ -1,21 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:insight/features/homepage/interface/widgets/facilities.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:insight/commons/models/hive_objects/student.dart';
+import 'package:insight/commons/providers/student_provider.dart';
 import 'package:insight/features/homepage/interface/widgets/greetings.dart';
 import 'package:insight/features/homepage/interface/widgets/helpful_tiles.dart';
 import 'package:insight/features/homepage/interface/widgets/notification_container.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
+    AsyncValue<Student> futureStudent = ref.watch(studentProvider);
+    Student? student = futureStudent.value;
+
+
     return Scaffold(
       body: SafeArea(
           child: Padding(
@@ -23,11 +29,11 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              GreetingWidget(),
-              NotificationsContainer(),
+              GreetingWidget(student: student),
+              const NotificationsContainer(),
               // Facilities(),
               helpfulText,
-              HelpfulTiles(),
+              const HelpfulTiles(),
             ],
           ),
         ),

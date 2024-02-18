@@ -8,7 +8,7 @@ part of 'insight_user_object.dart';
 
 class InsightUserAdapter extends TypeAdapter<InsightUser> {
   @override
-  final int typeId = 1;
+  final int typeId = 0;
 
   @override
   InsightUser read(BinaryReader reader) {
@@ -17,16 +17,17 @@ class InsightUserAdapter extends TypeAdapter<InsightUser> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return InsightUser()
-      ..accessToken = fields[0] as String
+      ..accessToken = fields[0] as String?
       ..token = fields[1] as String?
       ..idToken = fields[2] as String?
-      ..secret = fields[3] as String?;
+      ..secret = fields[3] as String?
+      ..refreshToken = fields[4] as String?;
   }
 
   @override
   void write(BinaryWriter writer, InsightUser obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.accessToken)
       ..writeByte(1)
@@ -34,7 +35,9 @@ class InsightUserAdapter extends TypeAdapter<InsightUser> {
       ..writeByte(2)
       ..write(obj.idToken)
       ..writeByte(3)
-      ..write(obj.secret);
+      ..write(obj.secret)
+      ..writeByte(4)
+      ..write(obj.refreshToken);
   }
 
   @override
