@@ -26,6 +26,6 @@ class Student {
 
   @override
   String toString() {
-    return 'Student{registrationNumber: $registrationNumber, \nname: $name, \nphotoURL: $photoURL,\nisSubscribedToSRM: $isSubscribedToSRM, \nsettings: $settings, \ninsightUser: $insightUser}';
+    return "Student{registrationNumber: $registrationNumber}";
   }
 }

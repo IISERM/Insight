@@ -19,5 +19,10 @@ class InsightUser {
   @HiveField(4)
   late String? refreshToken;
 
+  @override
+  String toString() {
+    return 'InsightUser{\n\tidToken: $idToken, \n\taccessToken: $accessToken\n}';
+  }
+
 
 }

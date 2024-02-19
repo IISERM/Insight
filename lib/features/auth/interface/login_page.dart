@@ -24,8 +24,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       _isLoading = !_isLoading;
     });
   }
-
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
