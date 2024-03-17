@@ -47,6 +47,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '336710432752',
     projectId: 'insight-turing',
     storageBucket: 'insight-turing.appspot.com',
+    androidClientId: 'http://336710432752-981dj9ihjtaj84d86529gls5i6k40jbu.apps.googleusercontent.com/'
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

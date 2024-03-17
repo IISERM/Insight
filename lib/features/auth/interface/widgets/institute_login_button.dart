@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:insight/features/auth/providers/auth_provider.dart';
 
-class InstituteLoginButton extends TextButton {
+class InstituteLoginButton extends ConsumerWidget {
+  const InstituteLoginButton({super.key});
 
-   InstituteLoginButton({super.key})
-      : super(
-          child: const Text("Institute Login", style: loginButtonTextStyle),
-          style: loginButtonStyle,
-          onPressed: null,
-  );
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final auth = ref.watch(authenticationProvider);
+    return TextButton(
+        onPressed: () => auth.signInWithGoogle(context),
+        style: loginButtonStyle,
+        child: const Text("Institute Login", style: loginButtonTextStyle));
+}
 
 }
 const TextStyle loginButtonTextStyle = TextStyle(color: Colors.white);

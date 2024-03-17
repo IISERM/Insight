@@ -11,6 +11,7 @@ class Facilities extends StatelessWidget {
       itemBuilder: (context, index) {
         return SizedBox(
           width: 160.0,
+          height: 100.0,
           child: Card(
             child: Text('Container ${index + 1}'),
           ),

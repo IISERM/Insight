@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:insight/commons/models/hive_objects/student.dart';
 
-class GreetingWidget extends StatelessWidget {
-  const GreetingWidget({Key? key}) : super(key: key);
+class GreetingWidget extends ConsumerWidget {
+  const GreetingWidget({super.key, this.student});
+
+  final Student? student;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    String name = student?.name?.split(" ")[0] ?? "User";
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Hello!'),
-            Text('{name}'),
+            const Text('Hello!'),
+            Text(name),
           ],
         ),
-        Container(
-          width: 50.0,
-          height: 50.0,
-          decoration: const BoxDecoration(
-            color: Colors.blue,
-            shape: BoxShape.circle,
-          ),
-        ),
+        GestureDetector(
+          child: ProfileButton(photoURL: student?.photoURL ?? "placeholder"),
+          onTap: () async {
+            //TODO: Implement onTap
+          },
+        )
       ],
+    );
+  }
+}
+
+class ProfileButton extends StatelessWidget {
+  final String photoURL;
+
+  const ProfileButton({super.key, required this.photoURL});
+
+  @override
+  Widget build(BuildContext context) {
+    ImageProvider profile = Image.network(photoURL).image;
+    return Container(
+      width: 50.0,
+      height: 50.0,
+      decoration: BoxDecoration(
+          color: Colors.blue,
+          shape: BoxShape.circle,
+          image: DecorationImage(image: profile)),
     );
   }
 }
